@@ -14,7 +14,7 @@ var DB *gorm.DB
 func Connect() error {
 	var err error
 
-	dsn := config.Config("DB_PORT")
+	dsn := config.Config("MYSQL")
 
 	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
