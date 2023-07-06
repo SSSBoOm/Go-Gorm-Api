@@ -9,22 +9,20 @@ import (
 	"gorm.io/gorm"
 )
 
-// Database instance
-var db *gorm.DB
+var DB *gorm.DB
 
-// Connect function
 func Connect() error {
 	var err error
 
 	dsn := config.Config("DB_PORT")
 
-	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
 		return err
 	}
 
-	err = db.AutoMigrate(&model.Product{})
+	err = DB.AutoMigrate(&model.Product{})
 	if err != nil {
 		return err
 	}
