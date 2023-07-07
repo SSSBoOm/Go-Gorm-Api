@@ -9,4 +9,8 @@ func MainRoutes(app *fiber.App) {
 	api := app.Group("/api")
 
 	api.Get("/", controller.GetAllProducts)
+	api.Get("/:id", controller.GetProductByID)
+	api.Post("/", controller.CreateProduct)
+	api.Put("/:id", controller.UpdateProduct)
+	api.Delete("/:id", controller.DeleteProduct)
 }
