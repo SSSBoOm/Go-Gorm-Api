@@ -16,7 +16,9 @@ type Product struct {
 }
 
 func main() {
-	database.Connect()
+	if err := database.Connect(); err != nil {
+		panic("Cant Connect Database")
+	}
 
 	app := fiber.New()
 
