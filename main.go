@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/SSSBoOm/go-gorm-api/database"
-	"github.com/SSSBoOm/go-gorm-api/router"
+	"github.com/SSSBoOm/go-gorm-api/routes"
 	"github.com/gofiber/fiber/v2"
 
 	"gorm.io/gorm"
@@ -17,12 +19,14 @@ type Product struct {
 
 func main() {
 	if err := database.Connect(); err != nil {
-		panic("Cant Connect Database")
+		fmt.Println("Cant Connect Database.")
+		panic(err)
 	}
 
 	app := fiber.New()
 
-	router.MainRoutes(app)
+	routes.AuthRoutes(app)
+	routes.ProductRoutes(app)
 
 	app.Listen(":3000")
 }
