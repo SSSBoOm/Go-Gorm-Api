@@ -22,7 +22,7 @@ func Connect() error {
 		return err
 	}
 
-	err = DB.AutoMigrate(&model.Product{})
+	err = DB.AutoMigrate(&model.User{}, &model.Product{})
 	if err != nil {
 		return err
 	}
